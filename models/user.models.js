@@ -31,11 +31,10 @@ const userSchema = new mongoose.Schema({
     phoneNumber:{
         type : Number,
         require : true,
-        unique: true
     },
     profileImageLink:{
         type : String,
-        unique: true
+        unique: false,
     },
     wishlist: [
         {
