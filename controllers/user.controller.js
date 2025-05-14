@@ -665,7 +665,7 @@ module.exports.ShowCart = async (req, res) => {
       const itemIds = user.cart.map((item) => item.itemId);
   
       // Connect to RabbitMQ and send a message to the 'item-request' queue
-      const connection = await amqp.connect('amqps://uwvfhigi:6FkSJbsjpHmoiwz0vq1u54GpG4vwLXN9@vulture.rmq.cloudamqp.com/uwvfhigi', {
+      const connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', {
         heartbeat: 60
       });
       const channel = await connection.createChannel();
@@ -774,7 +774,7 @@ module.exports.ShowWishlist = async (req, res) => {
         }));
 
         // Connect to RabbitMQ
-        const connection = await amqp.connect('amqps://uwvfhigi:6FkSJbsjpHmoiwz0vq1u54GpG4vwLXN9@vulture.rmq.cloudamqp.com/uwvfhigi', {
+        const connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', {
             heartbeat: 60
           });
         const channel = await connection.createChannel();
