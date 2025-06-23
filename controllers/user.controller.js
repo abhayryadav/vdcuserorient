@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt')
 const { validationResult } = require('express-validator')
 const amqp = require('amqplib');
-
+const mongoose = require('mongoose');
 const Stripe = require('stripe');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -273,6 +273,7 @@ module.exports.deleteUser = async (req, res, next) => {
 
 module.exports.AddItemToCart = async (req, res) => {
     try {
+        console.log("msg fron user service additemtocart control")
         const authHeader = req.headers.authorization;
         if (!authHeader) {
             return res.status(401).json({ error: 'Authorization token is required' });
@@ -717,41 +718,6 @@ module.exports.ShowCart = async (req, res) => {
     }
   };
   
-//   // Generate a unique correlation ID for each request
-//   function generateUuid() {
-//     return (Math.floor(Math.random() * 1e6)).toString(); // Ensure it's a string
-//   }
-  
-
-
-
-
-
-// module.exports.ShowWishlist = async (req, res) => {
-//     try {
-//         const authHeader = req.headers.authorization;
-//         if (!authHeader) {
-//             return res.status(401).json({ error: 'Authorization token is required' });
-//         }
-
-//         const token = authHeader.split(' ')[1];
-//         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-//         const email = decoded.email;
-
-//         const user = await userModel.findOne({ email }).populate('wishlist.itemId', 'name description price availableQuantity'); // Adjust fields as per your `Item` model
-
-//         if (!user) {
-//             return res.status(404).json({ error: 'User not found' });
-//         }
-
-//         res.status(200).json({ message: 'Wishlist retrieved successfully', wishlist: user.wishlist });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ error: 'Failed to retrieve wishlist' });
-//     }
-// };
-
-
 
 module.exports.ShowWishlist = async (req, res) => {
     try {
@@ -826,27 +792,6 @@ module.exports.ShowWishlist = async (req, res) => {
 function generateUuid() {
     return (Math.floor(Math.random() * 1e6)).toString(); // Ensure it's a string
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -929,6 +874,351 @@ module.exports.profileImage = async (req, res) => {
     }
 };
 
+
+
+
+// // New verifyUser endpoint for Order Management Service
+// module.exports.verifyUser = async (req, res) => {
+//     try {
+//         const { email, token } = req.body;
+
+//         if (!email || !token) {
+//             return res.status(400).json({ error: 'Email and token are required' });
+//         }
+
+//         // Verify the JWT token
+//         let decoded;
+//         try {
+//             decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+//         } catch (error) {
+//             if (error.name === 'JsonWebTokenError') {
+//                 return res.status(401).json({ error: 'Invalid token' });
+//             } else if (error.name === 'TokenExpiredError') {
+//                 return res.status(401).json({ error: 'Token expired' });
+//             }
+//             throw error;
+//         }
+
+//         // Check if the email in the token matches the provided email
+//         if (decoded.email !== email) {
+//             return res.status(401).json({ error: 'Token does not match provided email' });
+//         }
+
+//         // Find the user in the database
+//         const user = await userModel.findOne({ email }).select('-password');
+
+//         if (!user) {
+//             return res.status(404).json({ error: 'User not found' });
+//         }
+
+//         // Return user details (excluding sensitive fields)
+//         res.status(200).json({
+//             message: 'User verified successfully',
+//             user: {
+//                 _id: user._id,
+//                 firstname: user.firstname,
+//                 lastname: user.lastname,
+//                 email: user.email,
+//                 phoneNumber: user.phoneNumber,
+//                 profileImageLink: user.profileImageLink
+//             }
+//         });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// };
+
+
+
+// Consumer to handle user verification requests (to be run in User Operations Server)
+async function startUserVerificationConsumer() {
+    console.log('Starting user verification consumer...');
+    let connection = null;
+    let channel = null;
+  
+    try {
+      connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', { heartbeat: 60 });
+      channel = await connection.createChannel();
+      const requestQueue = 'user-verify-request';
+      const replyQueue = 'user-verify-response';
+  
+      await channel.assertQueue(requestQueue, { durable: true });
+      await channel.assertQueue(replyQueue, { durable: true });
+  
+      console.log('Waiting for user verification requests...');
+  
+      channel.consume(requestQueue, async (msg) => {
+        console.log('Received user verification request:', msg.content.toString());
+        if (msg !== null) {
+          const { email, token } = JSON.parse(msg.content.toString());
+          const correlationId = msg.properties.correlationId;
+          const replyTo = msg.properties.replyTo;
+  
+          try {
+            const user = await userModel
+              .findOne({ email })
+              .select('fullname email phoneNumber profileImageLink');
+            let response;
+  
+            if (!user) {
+              response = { error: 'User not found' };
+            } else {
+              try {
+                const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+                if (decoded.email !== email) {
+                  response = { error: 'Token does not match provided email' };
+                } else {
+                  response = {
+                    message: 'User verified successfully',
+                    user: {
+                      _id: user._id,
+                      fullName: `${user.fullname.firstname} ${user.fullname.lastname}`,
+                      email: user.email,
+                      phoneNumber: user.phoneNumber,
+                      profileImageLink: user.profileImageLink || '',
+                    },
+                  };
+                }
+              } catch (error) {
+                response = {
+                  error:
+                    error.name === 'JsonWebTokenError'
+                      ? 'Invalid token'
+                      : error.name === 'TokenExpiredError'
+                      ? 'Token expired'
+                      : 'Internal Server Error',
+                };
+              }
+            }
+            console.log('Sending response:', response);
+            channel.sendToQueue(replyTo, Buffer.from(JSON.stringify(response)), { correlationId });
+            channel.ack(msg);
+          } catch (error) {
+            console.error('Error processing user verification:', error);
+            channel.sendToQueue(
+              replyTo,
+              Buffer.from(JSON.stringify({ error: 'Internal Server Error' })),
+              { correlationId }
+            );
+            channel.ack(msg);
+          }
+        }
+      });
+    } catch (error) {
+      console.error('Error in user verification consumer:', error);
+      // Attempt to reconnect after a delay
+      setTimeout(startUserVerificationConsumer, 5000);
+    }
+  }
+  
+  startUserVerificationConsumer();
+
+
+
+
+
+
+
+
+
+
+
+  async function startOrderUpdateConsumer() {
+    console.log('Starting order update consumer...');
+    let connection = null;
+    let channel = null;
+  
+    try {
+      connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', { heartbeat: 60 });
+      channel = await connection.createChannel();
+      const requestQueue = 'order-update-request';
+      const replyQueue = 'order-update-response';
+  
+      await channel.assertQueue(requestQueue, { durable: true });
+      await channel.assertQueue(replyQueue, { durable: true });
+  
+      console.log('Waiting for order update requests...');
+  
+      channel.consume(requestQueue, async (msg) => {
+        if (msg !== null) {
+          console.log('Received order update request:', msg.content.toString());
+          const { userId, order } = JSON.parse(msg.content.toString());
+          const correlationId = msg.properties.correlationId;
+          const replyTo = msg.properties.replyTo;
+  
+          let response;
+  
+          try {
+            // Validate inputs
+            if (!userId || !mongoose.Types.ObjectId.isValid(userId)) {
+              response = { error: 'Valid userId is required' };
+            } else if (
+              !order ||
+              !order.orderId ||
+              !mongoose.Types.ObjectId.isValid(order.orderId) ||
+              !order.items ||
+              !Array.isArray(order.items) ||
+              order.items.length === 0
+            ) {
+              response = { error: 'Valid order details (orderId, items) are required' };
+            } else {
+              // Validate items
+              for (const item of order.items) {
+                if (!item.itemId || !mongoose.Types.ObjectId.isValid(item.itemId) || !item.quantity || item.quantity < 1) {
+                  response = { error: 'Each item must have a valid itemId and quantity' };
+                  break;
+                }
+              }
+  
+              if (!response) {
+                // Update user's orders array
+                const user = await userModel.findByIdAndUpdate(
+                  userId,
+                  {
+                    $push: {
+                      orders: {
+                        orderId: order.orderId,
+                        items: order.items.map(item => ({
+                          itemId: item.itemId,
+                          quantity: item.quantity,
+                        })),
+                        status: order.status || 'Order Placed',
+                        paymentOption: order.paymentOption || 1,
+                        address: order.address || '',
+                      },
+                    },
+                  },
+                  { new: true }
+                );
+  
+                if (!user) {
+                  response = { error: 'User not found' };
+                } else {
+                  response = {
+                    message: 'Order added to user successfully',
+                    userId: user._id,
+                  };
+                }
+              }
+            }
+  
+            console.log('Sending order update response:', response);
+            channel.sendToQueue(replyTo, Buffer.from(JSON.stringify(response)), { correlationId });
+            channel.ack(msg);
+          } catch (error) {
+            console.error('Error processing order update:', error);
+            response = { error: 'Internal Server Error' };
+            channel.sendToQueue(replyTo, Buffer.from(JSON.stringify(response)), { correlationId });
+            channel.ack(msg);
+          }
+        }
+      });
+  
+      // Handle connection errors
+      connection.on('error', (err) => {
+        console.error('AMQP connection error:', err);
+        channel = null;
+        connection = null;
+        setTimeout(startOrderUpdateConsumer, 5000);
+      });
+  
+      connection.on('close', () => {
+        console.log('AMQP connection closed');
+        channel = null;
+        connection = null;
+        setTimeout(startOrderUpdateConsumer, 5000);
+      });
+    } catch (error) {
+      console.error('Error in order update consumer:', error);
+      setTimeout(startOrderUpdateConsumer, 5000);
+    }
+  }
+  
+  // Start the order update consumer
+  startOrderUpdateConsumer();
+
+
+
+
+
+
+
+  
+// Start AMQP consumer for order updates
+async function startOrderStatusUpdateConsumer() {
+    console.log('Starting startOrderStatusUpdateConsumer update consumer...');
+    let connection = null;
+    let channel = null;
+    try {
+        connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', { heartbeat: 60 });
+        channel = await connection.createChannel();
+      const orderUpdateRequestQueue = 'orderStatus-update-request';
+      const orderUpdateReplyQueue = 'orderStatus-update-response';
+  
+      await channel.assertQueue(orderUpdateRequestQueue, { durable: true });
+      await channel.assertQueue(orderUpdateReplyQueue, { durable: true });
+  
+      channel.consume(orderUpdateRequestQueue, async (msg) => {
+        const { userId, order } = JSON.parse(msg.content.toString());
+        const correlationId = msg.properties.correlationId;
+        console.log('Received order update request:', { userId, order });
+        try {
+          if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(order.orderId)) {
+            channel.sendToQueue(
+              orderUpdateReplyQueue,
+              Buffer.from(JSON.stringify({ success: false, error: 'Invalid userId or orderId' })),
+              { correlationId }
+            );
+            channel.ack(msg);
+            return;
+          }
+  
+          const user = await userModel.findOneAndUpdate(
+            { _id: userId, 'orders.orderId': order.orderId },
+            { $set: { 'orders.$.status': order.status } },
+            { new: true }
+          );
+          console.log('User query result:', user ? user._id.toString() : 'null');
+
+          if (!user) {
+            console.log('User or order not found for userID:', userID, 'and orderId:', order.orderId);
+            channel.sendToQueue(
+              orderUpdateReplyQueue,
+              Buffer.from(JSON.stringify({ success: false, error: 'User or order not found' })),
+              { correlationId }
+            );
+          } else {
+            console.log('Order status updated successfully for userID:', userId, 'and orderId:', order.orderId);
+            console.log('Updated order status:', order.status);
+            channel.sendToQueue(
+              orderUpdateReplyQueue,
+              Buffer.from(JSON.stringify({ success: true, message: 'Order status updated in user_db' })),
+              { correlationId }
+            );
+          }
+        } catch (error) {
+          console.error('Error updating user order status:', error);
+          channel.sendToQueue(
+            orderUpdateReplyQueue,
+            Buffer.from(JSON.stringify({ success: false, error: 'Internal Server Error' })),
+            { correlationId }
+          );
+        }
+  
+        channel.ack(msg);
+      });
+      console.log('AMQP consumer started for order-update-request');
+    } catch (error) {
+      console.error('Error starting AMQP consumer:', error);
+    }
+  }
+  
+  // Start consumer when server starts
+  startOrderStatusUpdateConsumer();
+
+
+
 ///////////////////////////////////////
 // module.exports.Checkout = async (req, res) => {
 //     try {
@@ -965,4 +1255,134 @@ module.exports.profileImage = async (req, res) => {
 //         res.status(500).json({ error: "Failed to create checkout session" });
 //     }
 // };
+
+
+
+
+
+
+
+module.exports.getCartItemCount = async (req, res) => {
+    console.log("msg fron user service getCartItemCount control")
+    try {
+      // Authenticate user
+      const authHeader = req.headers.authorization;
+      if (!authHeader) {
+        return res.status(401).json({ error: 'Authorization token is required' });
+      }
+  
+      const token = authHeader.split(' ')[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+      const email = decoded.email;
+  
+      // Find user by email
+      const user = await userModel.findOne({ email });
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+  
+      // Calculate total cart item count by summing quantities
+      const cartCount = user.cart.reduce((total, item) => total + (item.quantity || 0), 0);
+  
+      res.status(200).json({
+        message: 'Cart item count retrieved successfully',
+        userId: user._id,
+        cartCount,
+      });
+    } catch (error) {
+      console.error('Error retrieving cart item count:', error);
+      if (error.name === 'JsonWebTokenError') {
+        return res.status(401).json({ error: 'Invalid token' });
+      } else if (error.name === 'TokenExpiredError') {
+        return res.status(401).json({ error: 'Token expired' });
+      }
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+
+
+
+
+  module.exports.getWishlistItemCount = async (req, res) => {
+    console.log("msg fron user service getWishlistItemCount control")
+    try {
+      // Authenticate user
+      const authHeader = req.headers.authorization;
+      if (!authHeader) {
+        return res.status(401).json({ error: 'Authorization token is required' });
+      }
+  
+      const token = authHeader.split(' ')[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+      const email = decoded.email;
+  
+      // Find user by email
+      const user = await userModel.findOne({ email });
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+  
+      // Get wishlist item count
+      const wishlistl = user.wishlist.length;
+      
+
+      res.status(200).json({
+        message: 'Wishlist item count retrieved successfully',
+        userId: user._id,
+        wishlistl,
+      });
+    } catch (error) {
+      console.error('Error retrieving wishlist item count:', error);
+      if (error.name === 'JsonWebTokenError') {
+        return res.status(401).json({ error: 'Invalid token' });
+      } else if (error.name === 'TokenExpiredError') {
+        return res.status(401).json({ error: 'Token expired' });
+      }
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+
+
+
+
+
+
+// get  all orders for the authenticated user
+module.exports.getUserOrders = async (req, res) => {
+    console.log("++++++++++++++++++++++++++++++++msg fron user service getUserOrders control")
+    try {
+      // Authenticate user
+      const authHeader = req.headers.authorization;
+      if (!authHeader) {
+        return res.status(401).json({ success: false, error: 'Authorization token is required' });
+      }
+  
+      const token = authHeader.split(' ')[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+      const email = decoded.email;
+  
+      // Find user by email and select orders
+      const user = await userModel.findOne({ email }).select('orders');
+  
+      if (!user) {
+        return res.status(404).json({ success: false, error: 'User not found' });
+      }
+  
+      res.status(200).json({
+        success: true,
+        message: 'Orders retrieved successfully',
+        orders: user.orders,
+      });
+    } catch (error) {
+      console.error('Error retrieving user orders:', error);
+      if (error.name === 'JsonWebTokenError') {
+        return res.status(401).json({ success: false, error: 'Invalid token' });
+      } else if (error.name === 'TokenExpiredError') {
+        return res.status(401).json({ success: false, error: 'Token expired' });
+      }
+      res.status(500).json({ success: false, error: 'Internal Server Error' });
+    }
+  };
+
+
 
