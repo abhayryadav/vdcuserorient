@@ -84,6 +84,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "Order Placed",
       },
+      Cstatus: {
+        type: Number,
+        default: 0, // 0: Not Cancelled, 1: Cancellation Requested, 2: Cancelled by Admin
+        enum: [0, 1, 2],
+      },
       paymentOption: {
         type: Number,
       },

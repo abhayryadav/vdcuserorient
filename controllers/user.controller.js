@@ -1182,7 +1182,7 @@ async function startOrderStatusUpdateConsumer() {
           console.log('User query result:', user ? user._id.toString() : 'null');
 
           if (!user) {
-            console.log('User or order not found for userID:', userID, 'and orderId:', order.orderId);
+            console.log('User or order not found for userID:', userId, 'and orderId:', order.orderId);
             channel.sendToQueue(
               orderUpdateReplyQueue,
               Buffer.from(JSON.stringify({ success: false, error: 'User or order not found' })),
@@ -1216,6 +1216,120 @@ async function startOrderStatusUpdateConsumer() {
   
   // Start consumer when server starts
   startOrderStatusUpdateConsumer();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Start AMQP consumer for order updates
+async function startOrderCancellationStatusUpdateConsumer() {
+  console.log('Starting startOrderCancellationStatusUpdateConsumer update consumer...');
+  let connection = null;
+  let channel = null;
+  try {
+      connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', { heartbeat: 60 });
+      channel = await connection.createChannel();
+    const orderUpdateRequestQueue = 'orderCStatus-update-request';
+    const orderUpdateReplyQueue = 'orderCStatus-update-response';
+
+    await channel.assertQueue(orderUpdateRequestQueue, { durable: true });
+    await channel.assertQueue(orderUpdateReplyQueue, { durable: true });
+
+    channel.consume(orderUpdateRequestQueue, async (msg) => {
+      const { userId, order } = JSON.parse(msg.content.toString());
+      const correlationId = msg.properties.correlationId;
+      console.log('Received order update request:', { userId, order });
+      try {
+        if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(order.orderId)) {
+          channel.sendToQueue(
+            orderUpdateReplyQueue,
+            Buffer.from(JSON.stringify({ success: false, error: 'Invalid userId or orderId' })),
+            { correlationId }
+          );
+          channel.ack(msg);
+          return;
+        }
+        const cancleOrderStatusNumberMap = {
+          'Normal': 0,
+          'Cancellation Requested': 1,
+          'Cancelled by Admin': 2,
+        };
+        const user = await userModel.findOneAndUpdate(
+          { _id: userId, 'orders.orderId': order.orderId },
+          { $set: { 'orders.$.Cstatus': cancleOrderStatusNumberMap[order.Cstatus] } },
+          { new: true }
+        );
+        console.log('User query result:', user ? user._id.toString() : 'null');
+
+        if (!user) {
+          console.log('User or order not found for userID:', userId, 'and orderId:', order.orderId);
+          channel.sendToQueue(
+            orderUpdateReplyQueue,
+            Buffer.from(JSON.stringify({ success: false, error: 'User or order not found' })),
+            { correlationId }
+          );
+        } else {
+          console.log('Order status updated successfully for userID:', userId, 'and orderId:', order.orderId);
+          console.log('Updated order status:', order.Cstatus);
+          channel.sendToQueue(
+            orderUpdateReplyQueue,
+            Buffer.from(JSON.stringify({ success: true, message: 'Order status updated in user_db' })),
+            { correlationId }
+          );
+        }
+      } catch (error) {
+        console.error('Error updating user order status:', error);
+        channel.sendToQueue(
+          orderUpdateReplyQueue,
+          Buffer.from(JSON.stringify({ success: false, error: 'Internal Server Error' })),
+          { correlationId }
+        );
+      }
+
+      channel.ack(msg);
+    });
+    console.log('AMQP consumer started for order-update-request');
+  } catch (error) {
+    console.error('Error starting AMQP consumer:', error);
+  }
+}
+
+// Start consumer when server starts
+startOrderCancellationStatusUpdateConsumer();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1386,3 +1500,72 @@ module.exports.getUserOrders = async (req, res) => {
 
 
 
+
+// New consumer: Handle order deletion requests
+async function startOrderDeletionConsumer() {
+  console.log('Starting order deletion consumer...');
+  let connection = null;
+  let channel = null;
+  try {
+    connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', { heartbeat: 60 });
+    channel = await connection.createChannel();
+    const requestQueue = 'order-delete-request';
+    const replyQueue = 'order-delete-response';
+    await channel.assertQueue(requestQueue, { durable: true });
+    await channel.assertQueue(replyQueue, { durable: true });
+    console.log('Waiting for order deletion requests...');
+    channel.consume(requestQueue, async (msg) => {
+      if (msg !== null) {
+        console.log('Received order deletion request:', msg.content.toString());
+        const { userId, orderId } = JSON.parse(msg.content.toString());
+        const correlationId = msg.properties.correlationId;
+        const replyTo = msg.properties.replyTo;
+        let response;
+        try {
+          if (!userId || !mongoose.Types.ObjectId.isValid(userId) || !orderId || !mongoose.Types.ObjectId.isValid(orderId)) {
+            response = { error: 'Valid userId and orderId are required' };
+          } else {
+            const user = await userModel.findOneAndUpdate(
+              { _id: userId, 'orders.orderId': orderId },
+              { $pull: { orders: { orderId } } },
+              { new: true }
+            );
+            if (!user) {
+              response = { error: 'User or order not found' };
+            } else {
+              response = {
+                message: 'Order deleted from user successfully',
+                userId,
+                orderId,
+              };
+            }
+          }
+          console.log('Sending order deletion response:', response);
+          channel.sendToQueue(replyTo, Buffer.from(JSON.stringify(response)), { correlationId });
+          channel.ack(msg);
+        } catch (error) {
+          console.error('Error processing order deletion:', error);
+          response = { error: 'Internal Server Error' };
+          channel.sendToQueue(replyTo, Buffer.from(JSON.stringify(response)), { correlationId });
+          channel.ack(msg);
+        }
+      }
+    });
+    connection.on('error', (err) => {
+      console.error('AMQP connection error:', err);
+      channel = null;
+      connection = null;
+      setTimeout(startOrderDeletionConsumer, 5000);
+    });
+    connection.on('close', () => {
+      console.log('AMQP connection closed');
+      channel = null;
+      connection = null;
+      setTimeout(startOrderDeletionConsumer, 5000);
+    });
+  } catch (error) {
+    console.error('Error in order deletion consumer:', error);
+    setTimeout(startOrderDeletionConsumer, 5000);
+  }
+}
+startOrderDeletionConsumer()
