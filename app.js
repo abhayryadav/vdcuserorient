@@ -23,7 +23,26 @@ connectToDb()
 
 
 
-app.use(cors())
+const corsOptions = {
+        origin: (origin, callback) => {
+          const allowedOrigins = [
+            'https://vdcendo.com',
+            'https://vdcinternational.vercel.app',
+            'https://vdcendo-api-testing-front.vercel.app',
+            'http://localhost:3000', // Add local development URL if needed
+          ];
+          if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+          } else {
+            callback(new Error('Not allowed by CORS'));
+          }
+        },
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        credentials: true,
+      };
+      
+      app.use(cors(corsOptions));
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
