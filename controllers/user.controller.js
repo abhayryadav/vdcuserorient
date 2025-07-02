@@ -1239,16 +1239,18 @@ async function startOrderCancellationStatusUpdateConsumer() {
   let connection = null;
   let channel = null;
   try {
-      connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', { heartbeat: 60 });
-      channel = await connection.createChannel();
+    connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', { heartbeat: 60 });
+    channel = await connection.createChannel();
     const orderUpdateRequestQueue = 'orderCStatus-update-request';
     const orderUpdateReplyQueue = 'orderCStatus-update-response';
 
     await channel.assertQueue(orderUpdateRequestQueue, { durable: true });
     await channel.assertQueue(orderUpdateReplyQueue, { durable: true });
-
+    console.log("reached here 1")
     channel.consume(orderUpdateRequestQueue, async (msg) => {
+      console.log('Message received from queue:', msg.content.toString());
       const { userId, order } = JSON.parse(msg.content.toString());
+      console.log('Parsed message:', { userId, order });
       
       
       console.log("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",userId,order)
@@ -1306,6 +1308,7 @@ async function startOrderCancellationStatusUpdateConsumer() {
     console.log('AMQP consumer started for order-update-request');
   } catch (error) {
     console.error('Error starting AMQP consumer:', error);
+    console.error('Error starting AMQP consumer:::::::::::::::::::::::::::::::::::::::::::::::', error.message, error.stack);
   }
 }
 
