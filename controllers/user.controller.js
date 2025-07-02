@@ -1235,7 +1235,7 @@ async function startOrderStatusUpdateConsumer() {
 
 // Start AMQP consumer for order updates
 async function startOrderCancellationStatusUpdateConsumer() {
-  console.log('Starting startOrderCancellationStatusUpdateConsumer update consumer...');
+  console.log('Starting startOrderCancellationStatusUpdateConsumer update consumer........................................................................................................................................');
   let connection = null;
   let channel = null;
   try {
@@ -1249,6 +1249,9 @@ async function startOrderCancellationStatusUpdateConsumer() {
 
     channel.consume(orderUpdateRequestQueue, async (msg) => {
       const { userId, order } = JSON.parse(msg.content.toString());
+      
+      
+      console.log("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=",userId,order)
       const correlationId = msg.properties.correlationId;
       console.log('Received order update request:', { userId, order });
       try {
