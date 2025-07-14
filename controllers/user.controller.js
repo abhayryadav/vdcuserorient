@@ -8,11 +8,53 @@ const mongoose = require('mongoose');
 const Stripe = require('stripe');
 const dotenv = require('dotenv');
 dotenv.config();
+
 // const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 
 
 
+// module.exports.googleLogin = async (req, res) => {
+//   try {
+//     const { idToken, email, fullname, profileImageLink } = req.body;
+
+//     // Verify Google ID token
+//     const ticket = await client.verifyIdToken({
+//       idToken,
+//       audience: process.env.GOOGLE_CLIENT_ID,
+//     });
+
+//     const payload = ticket.getPayload();
+//     if (payload.email !== email) {
+//       return res.status(401).json({ error: 'Invalid Google token' });
+//     }
+
+//     // Check if user exists
+//     let user = await userModel.findOne({ email });
+//     if (!user) {
+//       // Create new user
+//       const hashedPassword = await userModel.hashPassword(Math.random().toString(36).slice(-8)); // Generate random password
+//       user = await userService.createUser({
+//         firstname: fullname.firstname,
+//         lastname: fullname.lastname,
+//         email,
+//         password: hashedPassword,
+//         profileImageLink: profileImageLink || '',
+//         phoneNumber: '',
+//       });
+//     }
+
+//     // Generate JWT token
+//     const token = user.generateAuthTken();
+
+//     // Respond with user data and token
+//     const { password: _, ...userWithoutPassword } = user.toObject();
+//     res.status(200).json({ token, user: userWithoutPassword });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Google login failed' });
+//   }
+// };
 
 
 
@@ -645,153 +687,462 @@ module.exports.RemoveItemFromWishlist = async (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /////amqp 
+// module.exports.ShowCart = async (req, res) => {
+//     try {
+//       const authHeader = req.headers.authorization;
+//       if (!authHeader) {
+//         return res.status(401).json({ error: 'Authorization token is required' });
+//       }
+  
+//       const token = authHeader.split(' ')[1];
+//       const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+//       const email = decoded.email;
+  
+//       const user = await userModel.findOne({ email });
+  
+//       if (!user) {
+//         return res.status(404).json({ error: 'User not found' });
+//       }
+  
+//       const itemIds = user.cart.map((item) => item.itemId);
+  
+//       // Connect to RabbitMQ and send a message to the 'item-request' queue
+//       const connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', {
+//         heartbeat: 60
+//       });
+//       const channel = await connection.createChannel();
+//       console.log("Connected to RabbitMQ-----",channel);
+//       const requestQueue = 'item-request';
+//       const replyQueue = 'item-response'; // Response queue for the item details
+  
+//       await channel.assertQueue(requestQueue, { durable: true });
+//       await channel.assertQueue(replyQueue, { durable: true });
+  
+//       // Send itemIds as the message to the 'item-request' queue, and specify the reply-to queue
+//       const correlationId = generateUuid(); // Create a unique correlation ID for tracking
+
+//       const cartItems = user.cart.map(item => ({
+//         itemId: item.itemId,
+//         quantity: item.quantity // Use the actual quantity from the user's cart
+//       }));
+
+
+//       console.log({ cartItems, userId: user._id },"==============================================")
+//       channel.sendToQueue(requestQueue, Buffer.from(JSON.stringify({ cartItems, userId: user._id })),
+//         {
+//           persistent: true,
+//           replyTo: replyQueue,  // Specify where to send the response
+//           correlationId: correlationId  // Used for matching request and response
+//         });
+  
+//       console.log("Sent item request message to queue:", { cartItems, userId: user._id });
+//         console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+//       // Listen for the response from the Item Service
+//       channel.consume(replyQueue, (msg) => {
+//         console.log("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
+//         if (msg.properties.correlationId === correlationId) {
+//           const cartWithDetails = JSON.parse(msg.content.toString());
+//           console.log("Received item response message from queue:", cartWithDetails);
+//           console.log("cccccccccccccccccccccccccccccccccccccc")
+//           res.status(200).json({
+//             message: 'Cart retrieved successfully',
+//             cart: cartWithDetails
+//           });
+//           channel.close();
+//           connection.close();
+//         }
+//       }, { noAck: true });
+  
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).json({ error: 'Failed to retrieve cart' });
+//     }
+//   };
+  
+
+
+const { v4: uuidv4 } = require('uuid');
+
+let channel = null;
+
+async function initializeRabbitMQ() {
+  const connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', { heartbeat: 60 });
+  channel = await connection.createChannel();
+  await channel.assertQueue('item-requestx', { durable: true });
+  await channel.assertQueue('item-request-wishlistx', { durable: true });
+  return channel;
+}
+
 module.exports.ShowCart = async (req, res) => {
-    try {
-      const authHeader = req.headers.authorization;
-      if (!authHeader) {
-        return res.status(401).json({ error: 'Authorization token is required' });
-      }
-  
-      const token = authHeader.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-      const email = decoded.email;
-  
-      const user = await userModel.findOne({ email });
-  
-      if (!user) {
-        return res.status(404).json({ error: 'User not found' });
-      }
-  
-      const itemIds = user.cart.map((item) => item.itemId);
-  
-      // Connect to RabbitMQ and send a message to the 'item-request' queue
-      const connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', {
-        heartbeat: 60
-      });
-      const channel = await connection.createChannel();
-      console.log("Connected to RabbitMQ-----",channel);
-      const requestQueue = 'item-request';
-      const replyQueue = 'item-response'; // Response queue for the item details
-  
-      await channel.assertQueue(requestQueue, { durable: true });
-      await channel.assertQueue(replyQueue, { durable: true });
-  
-      // Send itemIds as the message to the 'item-request' queue, and specify the reply-to queue
-      const correlationId = generateUuid(); // Create a unique correlation ID for tracking
-
-      const cartItems = user.cart.map(item => ({
-        itemId: item.itemId,
-        quantity: item.quantity // Use the actual quantity from the user's cart
-      }));
-
-
-      console.log({ cartItems, userId: user._id },"==============================================")
-      channel.sendToQueue(requestQueue, Buffer.from(JSON.stringify({ cartItems, userId: user._id })),
-        {
-          persistent: true,
-          replyTo: replyQueue,  // Specify where to send the response
-          correlationId: correlationId  // Used for matching request and response
-        });
-  
-      console.log("Sent item request message to queue:", { cartItems, userId: user._id });
-        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-      // Listen for the response from the Item Service
-      channel.consume(replyQueue, (msg) => {
-        console.log("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
-        if (msg.properties.correlationId === correlationId) {
-          const cartWithDetails = JSON.parse(msg.content.toString());
-          console.log("Received item response message from queue:", cartWithDetails);
-          console.log("cccccccccccccccccccccccccccccccccccccc")
-          res.status(200).json({
-            message: 'Cart retrieved successfully',
-            cart: cartWithDetails
-          });
-          channel.close();
-          connection.close();
-        }
-      }, { noAck: true });
-  
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Failed to retrieve cart' });
+  console.log("-------------------showing cart--------------------")
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+      return res.status(401).json({ error: 'Authorization token is required' });
     }
-  };
-  
+
+    const token = authHeader.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    const user = await userModel.findOne({ email: decoded.email });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    if (!user.cart.length) {
+      return res.status(200).json({ message: 'Cart is empty', cart: [] });
+    }
+
+    if (!channel) await initializeRabbitMQ();
+
+    const requestQueue = 'item-requestx';
+    const replyQueue = await channel.assertQueue('', { exclusive: true });
+    const correlationId = uuidv4();
+    const cartItems = user.cart.map(item => ({
+      itemId: item.itemId,
+      quantity: item.quantity
+    }));
+
+    channel.sendToQueue(requestQueue, Buffer.from(JSON.stringify({ cartItems, userId: user._id })), {
+      persistent: true,
+      replyTo: replyQueue.queue,
+      correlationId
+    });
+
+    const timeout = setTimeout(() => {
+      res.status(504).json({ error: 'Item service timeout' });
+      channel.cancel(consumerTag);
+    }, 5000);
+
+    const { consumerTag } = await channel.consume(replyQueue.queue, (msg) => {
+      if (msg.properties.correlationId === correlationId) {
+        clearTimeout(timeout);
+        const cartWithDetails = JSON.parse(msg.content.toString());
+        res.status(200).json({
+          message: 'Cart retrieved successfully',
+          cart: cartWithDetails
+        });
+        channel.ack(msg);
+        channel.cancel(consumerTag);
+      }
+    }, { noAck: false });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to retrieve cart' });
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// module.exports.ShowWishlist = async (req, res) => {
+//     try {
+//         const authHeader = req.headers.authorization;
+//         if (!authHeader) {
+//             return res.status(401).json({ error: 'Authorization token is required' });
+//         }
+
+//         const token = authHeader.split(' ')[1];
+//         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+//         const email = decoded.email;
+
+//         const user = await userModel.findOne({ email });
+//         if (!user) {
+//             return res.status(404).json({ error: 'User not found' });
+//         }
+
+//         const wishlistItems = user.wishlist.map(item => ({
+//             itemId: item.itemId,
+//         }));
+
+//         // Connect to RabbitMQ
+//         const connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', {
+//             heartbeat: 60
+//           });
+//         const channel = await connection.createChannel();
+//         console.log("Connected to RabbitMQ   [][][][][][][][][][][][][][][][][][]",channel);
+//         const requestQueue = 'item-request-wishlist';
+//         const replyQueue = 'item-response-wishlist';
+
+//         await channel.assertQueue(requestQueue, { durable: true });
+//         await channel.assertQueue(replyQueue, { durable: true });
+
+//         const correlationId = generateUuid();
+//         console.log({ wishlistItems, userId: user._id },"==============================================")
+//         // Send wishlist items to the Item Service
+//         channel.sendToQueue(
+//             requestQueue,
+//             Buffer.from(JSON.stringify({ wishlistItems, userId: user._id })),
+//             {
+//                 persistent: true,
+//                 replyTo: replyQueue,
+//                 correlationId: correlationId
+//             }
+//         );
+
+//         console.log("Sent wishlist request to queue:", { wishlistItems, userId: user._id });
+
+//         // Listen for the response from the Item Service
+//         channel.consume(replyQueue, (msg) => {
+//             if (msg.properties.correlationId === correlationId) {
+//                 const wishlistWithDetails = JSON.parse(msg.content.toString());
+//                 console.log("Received wishlist response from queue:", wishlistWithDetails);
+
+//                 res.status(200).json({
+//                     message: 'Wishlist retrieved successfully',
+//                     wishlist: wishlistWithDetails
+//                 });
+
+//                 channel.close();
+//                 connection.close();
+//             }
+//         }, { noAck: true });
+
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ error: 'Failed to retrieve wishlist' });
+//     }
+// };
+
+
+
+
 
 module.exports.ShowWishlist = async (req, res) => {
-    try {
-        const authHeader = req.headers.authorization;
-        if (!authHeader) {
-            return res.status(401).json({ error: 'Authorization token is required' });
-        }
+  try {
 
-        const token = authHeader.split(' ')[1];
-        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        const email = decoded.email;
-
-        const user = await userModel.findOne({ email });
-        if (!user) {
-            return res.status(404).json({ error: 'User not found' });
-        }
-
-        const wishlistItems = user.wishlist.map(item => ({
-            itemId: item.itemId,
-        }));
-
-        // Connect to RabbitMQ
-        const connection = await amqp.connect('amqps://spogxdre:xsftHXmfeGSJlWsfCYVAnF1g6AXSlmuI@kebnekaise.lmq.cloudamqp.com/spogxdre', {
-            heartbeat: 60
-          });
-        const channel = await connection.createChannel();
-        console.log("Connected to RabbitMQ   [][][][][][][][][][][][][][][][][][]",channel);
-        const requestQueue = 'item-request-wishlist';
-        const replyQueue = 'item-response-wishlist';
-
-        await channel.assertQueue(requestQueue, { durable: true });
-        await channel.assertQueue(replyQueue, { durable: true });
-
-        const correlationId = generateUuid();
-        console.log({ wishlistItems, userId: user._id },"==============================================")
-        // Send wishlist items to the Item Service
-        channel.sendToQueue(
-            requestQueue,
-            Buffer.from(JSON.stringify({ wishlistItems, userId: user._id })),
-            {
-                persistent: true,
-                replyTo: replyQueue,
-                correlationId: correlationId
-            }
-        );
-
-        console.log("Sent wishlist request to queue:", { wishlistItems, userId: user._id });
-
-        // Listen for the response from the Item Service
-        channel.consume(replyQueue, (msg) => {
-            if (msg.properties.correlationId === correlationId) {
-                const wishlistWithDetails = JSON.parse(msg.content.toString());
-                console.log("Received wishlist response from queue:", wishlistWithDetails);
-
-                res.status(200).json({
-                    message: 'Wishlist retrieved successfully',
-                    wishlist: wishlistWithDetails
-                });
-
-                channel.close();
-                connection.close();
-            }
-        }, { noAck: true });
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Failed to retrieve wishlist' });
+    console.log("===================whishlist callled=======================")
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+      return res.status(401).json({ error: 'Authorization token is required' });
     }
+
+    const token = authHeader.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    const user = await userModel.findOne({ email: decoded.email });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    if (!user.wishlist.length) {
+      return res.status(200).json({
+        message: 'Wishlist is empty',
+        wishlist: []
+      });
+    }
+
+    if (!channel) await initializeRabbitMQ();
+
+    const requestQueue = 'item-request-wishlistx';
+    const replyQueue = await channel.assertQueue('', { exclusive: true });
+    const correlationId = uuidv4();
+    const wishlistItems = user.wishlist.map(item => ({
+      itemId: item.itemId
+    }));
+
+    channel.sendToQueue(
+      requestQueue,
+      Buffer.from(JSON.stringify({ wishlistItems, userId: user._id })),
+      {
+        persistent: true,
+        replyTo: replyQueue.queue,
+        correlationId
+      }
+    );
+
+    console.log('Sent wishlist request to queue:', { wishlistItems, userId: user._id });
+
+    const timeout = setTimeout(() => {
+      res.status(504).json({ error: 'Item service timeout' });
+      channel.cancel(consumerTag);
+    }, 5000);
+
+    const { consumerTag } = await channel.consume(replyQueue.queue, (msg) => {
+      if (msg.properties.correlationId === correlationId) {
+        clearTimeout(timeout);
+        const wishlistWithDetails = JSON.parse(msg.content.toString());
+        res.status(200).json({
+          message: 'Wishlist retrieved successfully',
+          wishlist: wishlistWithDetails
+        });
+        channel.ack(msg);
+        channel.cancel(consumerTag);
+      }
+    }, { noAck: false });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to retrieve wishlist' });
+  }
 };
 
 // Generate a unique correlation ID for each request
 function generateUuid() {
     return (Math.floor(Math.random() * 1e6)).toString(); // Ensure it's a string
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
