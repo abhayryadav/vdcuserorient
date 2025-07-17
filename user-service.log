@@ -335,3 +335,128 @@
 {"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T17:01:22.852Z"}
 {"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T17:01:22.905Z"}
 {"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T17:01:22.905Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T17:02:09.054Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T17:02:09.057Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T17:02:09.067Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T17:02:09.068Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T17:02:09.128Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T17:02:09.128Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T17:02:09.147Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T17:02:09.147Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T17:02:09.210Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T17:02:09.210Z"}
+{"correlationId":"c138b839-ba96-42ad-9f44-eb07ede49af0","level":"info","message":"Sending order status update response","response":{"message":"Order status updated in user database","success":true},"timestamp":"2025-07-17T17:04:17.333Z"}
+{"correlationId":"528a8751-5eed-43fc-a2f8-5001f7c40af2","level":"info","message":"Sending order status update response","response":{"message":"Order status updated in user database","success":true},"timestamp":"2025-07-17T17:04:44.162Z"}
+{"correlationId":"32f65009-1313-43ab-8961-e0d58fe249aa","level":"info","message":"Sending order status update response","response":{"message":"Order status updated in user database","success":true},"timestamp":"2025-07-17T17:05:00.442Z"}
+{"correlationId":"229dae6e-6868-495a-8be7-d014d03999d9","level":"info","message":"Sending order cancellation status update response","response":{"message":"Order cancellation status updated in user database","success":true},"timestamp":"2025-07-17T17:13:54.268Z"}
+{"correlationId":"a01bf5fa-88f1-43a0-9811-ce695519328c","level":"info","message":"Sending user verification response","response":{"message":"User verified successfully","user":{"_id":"68735bae5fbeea1f601d4d14","email":"abhayryadav0007@gmail.com","fullName":"Abhay Yadav","phoneNumber":9528387151,"profileImageLink":""}},"timestamp":"2025-07-17T17:41:59.784Z"}
+{"correlationId":"d14cf729-12d0-4f41-b8c0-5346faf2edeb","error":"Cast to embedded failed for value \"{\n  orderId: '687935e873b2a557131e893e',\n  items: [ { itemId: '6842fae9fb45d5ab8fafa8bc', quantity: 1 } ],\n  status: 'Processing',\n  Cstatus: 'Normal',\n  paymentOption: 4,\n  address: 'Abhay raj yadav, clement town, dehradun, 248002, Phone: 9528387151, Email: abhayryadav0007@gmail.com'\n}\" (type Object) at path \"orders\" because of \"CastError\"","level":"error","message":"Error processing order update","timestamp":"2025-07-17T17:42:02.991Z"}
+{"correlationId":"151676f0-b377-4e73-b8ba-33334f9b3ffc","level":"info","message":"Sending user verification response","response":{"message":"User verified successfully","user":{"_id":"68735bae5fbeea1f601d4d14","email":"abhayryadav0007@gmail.com","fullName":"Abhay Yadav","phoneNumber":9528387151,"profileImageLink":""}},"timestamp":"2025-07-17T17:43:37.879Z"}
+{"correlationId":"14ff0cd8-774e-4247-83a9-62cc5b094c38","error":"Cast to embedded failed for value \"{\n  orderId: '6879364a73b2a557131e8941',\n  items: [ { itemId: '6842fae9fb45d5ab8fafa8bc', quantity: 1 } ],\n  status: 'Processing',\n  Cstatus: 'Normal',\n  paymentOption: 3,\n  address: 'Abhay raj yadav, clement town, dehradun, 248002, Phone: 9528387151, Email: abhayryadav0007@gmail.com'\n}\" (type Object) at path \"orders\" because of \"CastError\"","level":"error","message":"Error processing order update","timestamp":"2025-07-17T17:43:41.067Z"}
+{"correlationId":"0faedaba-7e6f-485f-baf0-51adeb96af82","level":"info","message":"Sending user verification response","response":{"message":"User verified successfully","user":{"_id":"68735bae5fbeea1f601d4d14","email":"abhayryadav0007@gmail.com","fullName":"Abhay Yadav","phoneNumber":9528387151,"profileImageLink":""}},"timestamp":"2025-07-17T17:44:22.745Z"}
+{"correlationId":"9fa82e02-6a80-4dd4-a97e-ab1fd0e5f395","error":"Cast to embedded failed for value \"{\n  orderId: '687936772555865f12a00711',\n  items: [ { itemId: '6842fae9fb45d5ab8fafa8bc', quantity: 1 } ],\n  status: 'Processing',\n  Cstatus: 'Normal',\n  paymentOption: 3,\n  address: 'Abhay raj yadav, clement town, dehradun, 248002, Phone: 9528387151, Email: abhayryadav0007@gmail.com'\n}\" (type Object) at path \"orders\" because of \"CastError\"","level":"error","message":"Error processing order update","timestamp":"2025-07-17T17:44:25.921Z"}
+{"correlationId":"be4ad9af-c719-4256-a7f6-ed7a121594c8","level":"info","message":"Sending user verification response","response":{"message":"User verified successfully","user":{"_id":"68735bae5fbeea1f601d4d14","email":"abhayryadav0007@gmail.com","fullName":"Abhay Yadav","phoneNumber":9528387151,"profileImageLink":""}},"timestamp":"2025-07-17T17:44:56.432Z"}
+{"correlationId":"a5c6c773-f287-4ff3-8927-1c8f5f91a1a3","error":"Cast to embedded failed for value \"{\n  orderId: '687936982555865f12a00714',\n  items: [ { itemId: '6842fae9fb45d5ab8fafa8bc', quantity: 1 } ],\n  status: 'Processing',\n  Cstatus: 'Normal',\n  paymentOption: 1,\n  address: 'Abhay raj yadav, clement town, dehradun, 248002, Phone: 9528387151, Email: abhayryadav0007@gmail.com'\n}\" (type Object) at path \"orders\" because of \"CastError\"","level":"error","message":"Error processing order update","timestamp":"2025-07-17T17:44:59.594Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T17:51:41.680Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T17:51:41.683Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T17:51:41.684Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T17:51:41.684Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T17:51:41.699Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T17:51:41.699Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T17:51:41.700Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T17:51:41.700Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T17:51:41.743Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T17:51:41.743Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T17:53:38.184Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T17:53:38.189Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T17:53:38.280Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T17:53:38.281Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T17:53:38.320Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T17:53:38.320Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T17:53:38.340Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T17:53:38.340Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T17:53:38.342Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T17:53:38.343Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T17:54:35.598Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T17:54:35.602Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T17:54:35.679Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T17:54:35.680Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T17:54:35.729Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T17:54:35.729Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T17:54:35.767Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T17:54:35.767Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T17:54:35.803Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T17:54:35.803Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T17:54:47.736Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T17:54:47.739Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T17:54:47.740Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T17:54:47.741Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T17:54:47.854Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T17:54:47.854Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T17:54:47.855Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T17:54:47.855Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T17:54:47.891Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T17:54:47.891Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T17:59:23.722Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T17:59:23.726Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T17:59:23.727Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T17:59:23.728Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T17:59:23.741Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T17:59:23.742Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T17:59:23.764Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T17:59:23.765Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T17:59:23.814Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T17:59:23.815Z"}
+{"classId":60,"code":404,"level":"error","message":"RabbitMQ connection error: Channel closed by server: 404 (NOT-FOUND) with message \"NOT_FOUND - Queue 'order-update-requestx' not declared\"","methodId":20,"stack":"Error: Channel closed by server: 404 (NOT-FOUND) with message \"NOT_FOUND - Queue 'order-update-requestx' not declared\"\n    at Channel.accept (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\channel.js:320:19)\n    at Connection.mainAccept [as accept] (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\connection.js:579:33)\n    at TLSSocket.go (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\connection.js:431:16)\n    at TLSSocket.emit (node:events:518:28)\n    at emitReadable_ (node:internal/streams/readable:832:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:81:21)","timestamp":"2025-07-17T17:59:23.908Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T17:59:36.547Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T17:59:36.550Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T17:59:36.551Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T17:59:36.551Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T17:59:36.625Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T17:59:36.626Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T17:59:36.629Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T17:59:36.629Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T17:59:36.630Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T17:59:36.630Z"}
+{"correlationId":"ef9fcd57-e03b-4e4e-aae2-71a73ed546e3","error":"Cast to embedded failed for value \"{\n  items: [ { itemId: '6842fae9fb45d5ab8fafa8bc', quantity: 1 } ],\n  status: 'Processing',\n  Cstatus: 'Normal',\n  paymentOption: 4,\n  address: 'Abhay raj yadav, clement town, dehradun, 248002, Phone: 9528387151, Email: abhayryadav0007@gmail.com'\n}\" (type Object) at path \"orders\" because of \"CastError\"","level":"error","message":"Error processing order update","timestamp":"2025-07-17T18:00:05.543Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T18:05:01.060Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T18:05:01.062Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T18:05:01.096Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T18:05:01.097Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T18:05:01.116Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T18:05:01.117Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T18:05:01.127Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T18:05:01.128Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T18:05:01.187Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T18:05:01.188Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T18:05:25.487Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T18:05:25.490Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T18:05:25.537Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T18:05:25.538Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T18:05:25.624Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T18:05:25.624Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T18:05:25.647Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T18:05:25.647Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T18:05:25.677Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T18:05:25.678Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T18:05:50.458Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T18:05:50.460Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T18:05:50.572Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T18:05:50.573Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T18:05:50.574Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T18:05:50.574Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T18:05:50.580Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T18:05:50.580Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T18:05:50.627Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T18:05:50.628Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T18:06:08.693Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T18:06:08.695Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T18:06:08.736Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T18:06:08.737Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T18:06:08.751Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T18:06:08.751Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T18:06:08.767Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T18:06:08.767Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T18:06:08.772Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T18:06:08.772Z"}
+{"correlationId":"923725f2-c2e4-4c45-90bf-187df27d63bc","level":"info","message":"Sending order update response","response":{"message":"Order added to user successfully","userId":"68735bae5fbeea1f601d4d14"},"timestamp":"2025-07-17T18:06:24.731Z"}

@@ -2070,6 +2070,28 @@ async function startUserVerificationConsumer() {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 async function startOrderUpdateConsumer() {
   let connection = null;
   let channel = null;
@@ -2079,7 +2101,7 @@ async function startOrderUpdateConsumer() {
       connection = await amqp.connect(process.env.RABBITMQ_URL, { heartbeat: 60 });
       channel = await connection.createChannel();
       channel.prefetch(10);
-      await channel.assertQueue('order-update-request', { durable: true });
+      await channel.assertQueue('order-update-requestx', { durable: true });
       logger.info('Order update consumer initialized');
 
       connection.on('error', (err) => {
@@ -2106,11 +2128,12 @@ async function startOrderUpdateConsumer() {
 
   try {
     const channel = await connect();
-    const requestQueue = 'order-update-request';
+    const requestQueue = 'order-update-requestx';
 
     logger.info('Waiting for order update requests');
 
     channel.consume(requestQueue, async (msg) => {
+      console.log(msg, "]]]]]]]]]]]]]]]]]]]]]]]]")
       if (msg === null) {
         logger.warn('Received null message');
         return;
@@ -2156,7 +2179,12 @@ async function startOrderUpdateConsumer() {
             return;
           }
         }
-
+        const cstatusMap = {
+          'Normal': 0,
+          'Cancellation Requested': 1,
+          'Cancelled by Admin': 2
+        };
+        const mappedCstatus = cstatusMap[order.Cstatus] !== undefined ? cstatusMap[order.Cstatus] : 0;
         const user = await async.retry(
           { times: 3, interval: 1000 },
           async () => await userModel.findByIdAndUpdate(
@@ -2170,7 +2198,7 @@ async function startOrderUpdateConsumer() {
                     quantity: item.quantity
                   })),
                   status: order.status || 'Processing',
-                  Cstatus: order.Cstatus || 'Normal',
+                  Cstatus: mappedCstatus,
                   paymentOption: order.paymentOption || 1,
                   address: order.address || ''
                 }
