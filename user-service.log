@@ -272,3 +272,66 @@
 {"correlationId":"1984cb9d-f6c5-468d-837d-ca4e9f8fdce6","level":"info","message":"Sending order cancellation status update response","response":{"message":"Order cancellation status updated in user database","success":true},"timestamp":"2025-07-17T16:42:49.959Z"}
 {"correlationId":"2b4dd735-6b99-4e9f-b718-b55b5f3f7794","level":"info","message":"Sending order cancellation status update response","response":{"message":"Order cancellation status updated in user database","success":true},"timestamp":"2025-07-17T16:43:12.035Z"}
 {"correlationId":"a4ef5d14-c57c-4e8b-a8b3-4f1ff7c5392e","level":"info","message":"Sending order status update response","response":{"message":"Order status updated in user database","success":true},"timestamp":"2025-07-17T16:43:15.819Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T16:56:13.611Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T16:56:13.624Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T16:56:13.748Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T16:56:13.748Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T16:56:13.752Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T16:56:13.753Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T16:56:13.823Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T16:56:13.823Z"}
+{"classId":60,"code":404,"level":"error","message":"RabbitMQ connection error: Channel closed by server: 404 (NOT-FOUND) with message \"NOT_FOUND - Queue 'orderStatus-update-requestx' not declared\"","methodId":20,"stack":"Error: Channel closed by server: 404 (NOT-FOUND) with message \"NOT_FOUND - Queue 'orderStatus-update-requestx' not declared\"\n    at Channel.accept (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\channel.js:320:19)\n    at Connection.mainAccept [as accept] (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\connection.js:579:33)\n    at TLSSocket.go (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\connection.js:431:16)\n    at TLSSocket.emit (node:events:518:28)\n    at emitReadable_ (node:internal/streams/readable:832:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:81:21)","timestamp":"2025-07-17T16:56:14.017Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T16:56:23.266Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T16:56:23.269Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T16:56:23.323Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T16:56:23.323Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T16:56:23.331Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T16:56:23.332Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T16:56:23.408Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T16:56:23.409Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T16:56:23.416Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T16:56:23.417Z"}
+{"classId":60,"code":404,"level":"error","message":"RabbitMQ connection error: Channel closed by server: 404 (NOT-FOUND) with message \"NOT_FOUND - Queue 'orderStatus-update-requestx' not declared\"","methodId":20,"stack":"Error: Channel closed by server: 404 (NOT-FOUND) with message \"NOT_FOUND - Queue 'orderStatus-update-requestx' not declared\"\n    at Channel.accept (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\channel.js:320:19)\n    at Connection.mainAccept [as accept] (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\connection.js:579:33)\n    at TLSSocket.go (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\connection.js:431:16)\n    at TLSSocket.emit (node:events:518:28)\n    at emitReadable_ (node:internal/streams/readable:832:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:81:21)","timestamp":"2025-07-17T16:56:23.513Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T16:56:36.695Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T16:56:36.702Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T16:56:36.773Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T16:56:36.779Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T16:56:36.841Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T16:56:36.842Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T16:56:36.879Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T16:56:36.881Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T16:56:36.900Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T16:56:36.901Z"}
+{"classId":60,"code":404,"level":"error","message":"RabbitMQ connection error: Channel closed by server: 404 (NOT-FOUND) with message \"NOT_FOUND - Queue 'orderStatus-update-requestx' not declared\"","methodId":20,"stack":"Error: Channel closed by server: 404 (NOT-FOUND) with message \"NOT_FOUND - Queue 'orderStatus-update-requestx' not declared\"\n    at Channel.accept (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\channel.js:320:19)\n    at Connection.mainAccept [as accept] (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\connection.js:579:33)\n    at TLSSocket.go (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\connection.js:431:16)\n    at TLSSocket.emit (node:events:518:28)\n    at emitReadable_ (node:internal/streams/readable:832:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:81:21)","timestamp":"2025-07-17T16:56:36.966Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T16:56:45.257Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T16:56:45.261Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T16:56:45.262Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T16:56:45.263Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T16:56:45.264Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T16:56:45.264Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T16:56:45.297Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T16:56:45.297Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T16:56:45.376Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T16:56:45.376Z"}
+{"classId":60,"code":404,"level":"error","message":"RabbitMQ connection error: Channel closed by server: 404 (NOT-FOUND) with message \"NOT_FOUND - Queue 'orderStatus-update-requestx' not declared\"","methodId":20,"stack":"Error: Channel closed by server: 404 (NOT-FOUND) with message \"NOT_FOUND - Queue 'orderStatus-update-requestx' not declared\"\n    at Channel.accept (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\channel.js:320:19)\n    at Connection.mainAccept [as accept] (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\connection.js:579:33)\n    at TLSSocket.go (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\connection.js:431:16)\n    at TLSSocket.emit (node:events:518:28)\n    at emitReadable_ (node:internal/streams/readable:832:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:81:21)","timestamp":"2025-07-17T16:56:45.443Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T16:57:01.440Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T16:57:01.443Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T16:57:01.448Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T16:57:01.448Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T16:57:01.449Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T16:57:01.449Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T16:57:01.486Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T16:57:01.486Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T16:57:01.488Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T16:57:01.488Z"}
+{"classId":60,"code":404,"level":"error","message":"RabbitMQ connection error: Channel closed by server: 404 (NOT-FOUND) with message \"NOT_FOUND - Queue 'orderStatus-update-requestx' not declared\"","methodId":20,"stack":"Error: Channel closed by server: 404 (NOT-FOUND) with message \"NOT_FOUND - Queue 'orderStatus-update-requestx' not declared\"\n    at Channel.accept (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\channel.js:320:19)\n    at Connection.mainAccept [as accept] (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\connection.js:579:33)\n    at TLSSocket.go (D:\\startupvdc\\userOrient\\node_modules\\amqplib\\lib\\connection.js:431:16)\n    at TLSSocket.emit (node:events:518:28)\n    at emitReadable_ (node:internal/streams/readable:832:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:81:21)","timestamp":"2025-07-17T16:57:01.674Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T17:01:22.705Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T17:01:22.710Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T17:01:22.771Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T17:01:22.771Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T17:01:22.790Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T17:01:22.791Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T17:01:22.852Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T17:01:22.852Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T17:01:22.905Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T17:01:22.905Z"}

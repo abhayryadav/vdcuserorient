@@ -2238,7 +2238,7 @@ async function startOrderStatusUpdateConsumer() {
       connection = await amqp.connect(process.env.RABBITMQ_URL, { heartbeat: 60 });
       channel = await connection.createChannel();
       channel.prefetch(10);
-      await channel.assertQueue('orderStatus-update-request', { durable: true });
+      await channel.assertQueue('orderStatus-update-requestx', { durable: true });
       logger.info('Order status update consumer initialized');
 
       connection.on('error', (err) => {
