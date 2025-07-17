@@ -1,0 +1,274 @@
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T18:08:58.354Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T18:08:58.358Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T18:08:58.382Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T18:08:58.383Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T18:08:58.428Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T18:08:58.429Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T18:08:58.465Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T18:08:58.466Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T18:08:58.495Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T18:08:58.496Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T18:50:58.208Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T18:50:58.211Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T18:50:58.280Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T18:50:58.281Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T18:50:58.282Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T18:50:58.282Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T18:50:58.351Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T18:50:58.351Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T18:50:58.352Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T18:50:58.353Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T18:51:06.798Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T18:51:06.801Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T18:51:06.834Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T18:51:06.834Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T18:51:06.865Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T18:51:06.865Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T18:51:06.885Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T18:51:06.885Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T18:51:06.913Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T18:51:06.913Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T18:51:37.743Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T18:51:37.746Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T18:51:37.748Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T18:51:37.749Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T18:51:37.789Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T18:51:37.790Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T18:51:37.821Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T18:51:37.821Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T18:51:37.826Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T18:51:37.826Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T18:52:14.362Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T18:52:14.366Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T18:52:14.368Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T18:52:14.368Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T18:52:14.379Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T18:52:14.379Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T18:52:14.427Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T18:52:14.427Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T18:52:14.428Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T18:52:14.428Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T18:52:18.692Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T18:52:18.695Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T18:52:18.748Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T18:52:18.749Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T18:52:18.755Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T18:52:18.755Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T18:52:18.811Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T18:52:18.812Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T18:52:18.812Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T18:52:18.813Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T18:52:27.536Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T18:52:27.540Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T18:52:27.542Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T18:52:27.543Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T18:52:27.605Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T18:52:27.606Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T18:52:27.607Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T18:52:27.608Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T18:52:27.630Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T18:52:27.630Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T18:52:35.852Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T18:52:35.855Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T18:52:35.892Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T18:52:35.893Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T18:52:35.894Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T18:52:35.894Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T18:52:35.898Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T18:52:35.899Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T18:52:35.936Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T18:52:35.936Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T18:53:24.506Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T18:53:24.509Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T18:53:24.533Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T18:53:24.533Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T18:53:24.553Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T18:53:24.554Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T18:53:24.558Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T18:53:24.558Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T18:53:24.613Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T18:53:24.613Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T18:53:43.714Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T18:53:43.718Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T18:53:43.719Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T18:53:43.719Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T18:53:43.794Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T18:53:43.794Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T18:53:43.795Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T18:53:43.795Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T18:53:43.871Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T18:53:43.871Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T18:53:50.410Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T18:53:50.413Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T18:53:50.414Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T18:53:50.415Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T18:53:50.431Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T18:53:50.432Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T18:53:50.445Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T18:53:50.445Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T18:53:50.507Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T18:53:50.508Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T18:57:26.611Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T18:57:26.614Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T18:57:26.615Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T18:57:26.615Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T18:57:26.740Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T18:57:26.740Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T18:57:26.741Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T18:57:26.741Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T18:57:26.742Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T18:57:26.742Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T18:57:39.910Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T18:57:39.913Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T18:57:39.945Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T18:57:39.945Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T18:57:39.946Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T18:57:39.947Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T18:57:39.983Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T18:57:39.983Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T18:57:40.001Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T18:57:40.002Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T19:01:46.598Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T19:01:46.601Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T19:01:46.607Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T19:01:46.607Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T19:01:47.006Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T19:01:47.006Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T19:01:47.009Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T19:01:47.009Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T19:01:47.010Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T19:01:47.010Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T19:02:04.727Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T19:02:04.730Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T19:02:04.767Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T19:02:04.768Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T19:02:04.795Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T19:02:04.796Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T19:02:04.839Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T19:02:04.839Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T19:02:04.887Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T19:02:04.888Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T19:02:14.457Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T19:02:14.461Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T19:02:14.546Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T19:02:14.547Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T19:02:14.590Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T19:02:14.590Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T19:02:14.613Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T19:02:14.614Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T19:02:14.649Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T19:02:14.650Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T19:02:22.493Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T19:02:22.496Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T19:02:22.505Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T19:02:22.505Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T19:02:22.507Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T19:02:22.507Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T19:02:22.509Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T19:02:22.509Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T19:02:22.567Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T19:02:22.567Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T19:02:26.307Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T19:02:26.310Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T19:02:26.400Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T19:02:26.401Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T19:02:26.401Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T19:02:26.402Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T19:02:26.486Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T19:02:26.487Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T19:02:26.528Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T19:02:26.529Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T19:03:04.187Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T19:03:04.189Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T19:03:04.208Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T19:03:04.209Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T19:03:04.254Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T19:03:04.254Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T19:03:04.275Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T19:03:04.276Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T19:03:04.277Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T19:03:04.277Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T19:03:37.310Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T19:03:37.313Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T19:03:37.366Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T19:03:37.367Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T19:03:37.368Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T19:03:37.368Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T19:03:37.417Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T19:03:37.418Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T19:03:37.478Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T19:03:37.479Z"}
+{"correlationId":"ae0fd415-3911-4a3b-9987-cf04ee86e732","error":"async is not defined","level":"error","message":"Error processing order cancellation status update","timestamp":"2025-07-15T19:03:43.992Z"}
+{"correlationId":"c48b4ae4-0389-4069-b8c6-5af249e7f51d","error":"async is not defined","level":"error","message":"Error processing order cancellation status update","timestamp":"2025-07-15T19:03:58.657Z"}
+{"correlationId":"eb773439-3734-40dc-ab15-7a6f8d3b4c9e","error":"async is not defined","level":"error","message":"Error processing order cancellation status update","timestamp":"2025-07-15T19:04:10.109Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T19:07:37.082Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T19:07:37.086Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T19:07:37.087Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T19:07:37.087Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T19:07:37.088Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T19:07:37.089Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T19:07:37.122Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T19:07:37.123Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T19:07:37.168Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T19:07:37.169Z"}
+{"correlationId":"2981475f-c1d0-4e41-9556-5bf8a46489b8","level":"info","message":"Sending order cancellation status update response","response":{"message":"Order cancellation status updated in user database","success":true},"timestamp":"2025-07-15T19:07:54.280Z"}
+{"correlationId":"f99770a2-ee6d-4a04-b7b1-ccc92371c006","level":"info","message":"Sending order cancellation status update response","response":{"message":"Order cancellation status updated in user database","success":true},"timestamp":"2025-07-15T19:08:13.359Z"}
+{"correlationId":"15401ade-2b38-478b-90c8-6cb8e1c33772","level":"info","message":"Sending order cancellation status update response","response":{"message":"Order cancellation status updated in user database","success":true},"timestamp":"2025-07-15T19:20:23.444Z"}
+{"correlationId":"7e1d7317-f3a8-4dcf-8e86-17e191de27d7","level":"info","message":"Sending order cancellation status update response","response":{"message":"Order cancellation status updated in user database","success":true},"timestamp":"2025-07-15T19:32:21.184Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T19:54:44.722Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T19:54:44.725Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T19:54:44.733Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T19:54:44.733Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T19:54:44.784Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T19:54:44.785Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T19:54:44.809Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T19:54:44.809Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T19:54:44.836Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T19:54:44.837Z"}
+{"correlationId":"f1c420ca-5cc7-4b4e-bc45-de0e839a9ae0","level":"info","message":"Sending order status update response","response":{"message":"Order status updated in user database","success":true},"timestamp":"2025-07-15T19:54:52.818Z"}
+{"correlationId":"b661c664-11e1-43af-a336-6664337c8de0","level":"info","message":"Sending order status update response","response":{"message":"Order status updated in user database","success":true},"timestamp":"2025-07-15T19:55:00.159Z"}
+{"correlationId":"471a3630-801e-47dd-b734-fb437cde07df","level":"info","message":"Sending order status update response","response":{"message":"Order status updated in user database","success":true},"timestamp":"2025-07-15T20:34:12.555Z"}
+{"correlationId":"9d4140f1-74af-4ec2-b316-2e35851ff271","level":"info","message":"Sending order cancellation status update response","response":{"message":"Order cancellation status updated in user database","success":true},"timestamp":"2025-07-15T20:37:15.961Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-15T20:38:45.450Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-15T20:38:45.454Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-15T20:38:45.455Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-15T20:38:45.455Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-15T20:38:45.456Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-15T20:38:45.457Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-15T20:38:45.513Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-15T20:38:45.513Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-15T20:38:45.545Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-15T20:38:45.546Z"}
+{"code":"ECONNRESET","errno":-4077,"level":"error","message":"RabbitMQ connection error: read ECONNRESET","stack":"Error: read ECONNRESET\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:217:20)","syscall":"read","timestamp":"2025-07-16T03:58:26.747Z"}
+{"level":"warn","message":"RabbitMQ connection closed, attempting to reconnect","timestamp":"2025-07-16T03:58:26.797Z"}
+{"code":"ECONNRESET","errno":-4077,"level":"error","message":"RabbitMQ connection error: read ECONNRESET","stack":"Error: read ECONNRESET\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:217:20)","syscall":"read","timestamp":"2025-07-16T03:58:27.179Z"}
+{"level":"warn","message":"RabbitMQ connection closed, attempting to reconnect","timestamp":"2025-07-16T03:58:27.181Z"}
+{"code":"ECONNRESET","errno":-4077,"level":"error","message":"RabbitMQ connection error: read ECONNRESET","stack":"Error: read ECONNRESET\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:217:20)","syscall":"read","timestamp":"2025-07-17T13:42:43.837Z"}
+{"level":"warn","message":"RabbitMQ connection closed, attempting to reconnect","timestamp":"2025-07-17T13:42:43.858Z"}
+{"code":"ECONNRESET","errno":-4077,"level":"error","message":"RabbitMQ connection error: read ECONNRESET","stack":"Error: read ECONNRESET\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:217:20)","syscall":"read","timestamp":"2025-07-17T13:42:43.890Z"}
+{"level":"warn","message":"RabbitMQ connection closed, attempting to reconnect","timestamp":"2025-07-17T13:42:43.902Z"}
+{"code":"ECONNRESET","errno":-4077,"level":"error","message":"RabbitMQ connection error: read ECONNRESET","stack":"Error: read ECONNRESET\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:217:20)","syscall":"read","timestamp":"2025-07-17T13:42:43.916Z"}
+{"level":"warn","message":"RabbitMQ connection closed, attempting to reconnect","timestamp":"2025-07-17T13:42:43.929Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T16:39:56.191Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T16:39:56.202Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T16:39:56.369Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T16:39:56.369Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T16:39:56.380Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T16:39:56.381Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T16:39:56.383Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T16:39:56.384Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T16:39:56.397Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T16:39:56.397Z"}
+{"level":"info","message":"Order status update consumer initialized","timestamp":"2025-07-17T16:42:19.322Z"}
+{"level":"info","message":"Waiting for order status update requests","timestamp":"2025-07-17T16:42:19.331Z"}
+{"level":"info","message":"Order update consumer initialized","timestamp":"2025-07-17T16:42:19.722Z"}
+{"level":"info","message":"Waiting for order update requests","timestamp":"2025-07-17T16:42:19.722Z"}
+{"level":"info","message":"Order deletion consumer initialized","timestamp":"2025-07-17T16:42:19.792Z"}
+{"level":"info","message":"Waiting for order deletion requests","timestamp":"2025-07-17T16:42:19.792Z"}
+{"level":"info","message":"User verification consumer initialized","timestamp":"2025-07-17T16:42:19.824Z"}
+{"level":"info","message":"Waiting for user verification requests","timestamp":"2025-07-17T16:42:19.825Z"}
+{"level":"info","message":"Order cancellation status update consumer initialized","timestamp":"2025-07-17T16:42:20.247Z"}
+{"level":"info","message":"Waiting for order cancellation status update requests","timestamp":"2025-07-17T16:42:20.247Z"}
+{"correlationId":"1984cb9d-f6c5-468d-837d-ca4e9f8fdce6","level":"info","message":"Sending order cancellation status update response","response":{"message":"Order cancellation status updated in user database","success":true},"timestamp":"2025-07-17T16:42:49.959Z"}
+{"correlationId":"2b4dd735-6b99-4e9f-b718-b55b5f3f7794","level":"info","message":"Sending order cancellation status update response","response":{"message":"Order cancellation status updated in user database","success":true},"timestamp":"2025-07-17T16:43:12.035Z"}
+{"correlationId":"a4ef5d14-c57c-4e8b-a8b3-4f1ff7c5392e","level":"info","message":"Sending order status update response","response":{"message":"Order status updated in user database","success":true},"timestamp":"2025-07-17T16:43:15.819Z"}
