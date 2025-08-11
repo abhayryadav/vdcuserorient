@@ -879,7 +879,7 @@ module.exports.ShowCart = async (req, res) => {
     const timeout = setTimeout(() => {
       res.status(504).json({ error: 'Item service timeout' });
       channel.cancel(consumerTag);
-    }, 5000);
+    }, 60000);
 
     const { consumerTag } = await channel.consume(replyQueue.queue, (msg) => {
       if (msg.properties.correlationId === correlationId) {
@@ -1092,7 +1092,7 @@ module.exports.ShowWishlist = async (req, res) => {
     const timeout = setTimeout(() => {
       res.status(504).json({ error: 'Item service timeout' });
       channel.cancel(consumerTag);
-    }, 5000);
+    }, 60000);
 
     const { consumerTag } = await channel.consume(replyQueue.queue, (msg) => {
       if (msg.properties.correlationId === correlationId) {
@@ -1506,7 +1506,7 @@ module.exports.getUserOrders = async (req, res) => {
 //   } catch (error) {
 //     console.error('Error in user verification consumer:', error);
 //     // Attempt to reconnect after a delay
-//     setTimeout(startUserVerificationConsumer, 5000);
+//     setTimeout(startUserVerificationConsumer, 60000);
 //   }
 // }
 
@@ -1615,18 +1615,18 @@ module.exports.getUserOrders = async (req, res) => {
 //       console.error('AMQP connection error:', err);
 //       channel = null;
 //       connection = null;
-//       setTimeout(startOrderUpdateConsumer, 5000);
+//       setTimeout(startOrderUpdateConsumer, 60000);
 //     });
 
 //     connection.on('close', () => {
 //       console.log('AMQP connection closed');
 //       channel = null;
 //       connection = null;
-//       setTimeout(startOrderUpdateConsumer, 5000);
+//       setTimeout(startOrderUpdateConsumer, 60000);
 //     });
 //   } catch (error) {
 //     console.error('Error in order update consumer:', error);
-//     setTimeout(startOrderUpdateConsumer, 5000);
+//     setTimeout(startOrderUpdateConsumer, 60000);
 //   }
 // }
 
@@ -1855,17 +1855,17 @@ module.exports.getUserOrders = async (req, res) => {
 //     console.error('AMQP connection error:', err);
 //     channel = null;
 //     connection = null;
-//     setTimeout(startOrderDeletionConsumer, 5000);
+//     setTimeout(startOrderDeletionConsumer, 60000);
 //   });
 //   connection.on('close', () => {
 //     console.log('AMQP connection closed');
 //     channel = null;
 //     connection = null;
-//     setTimeout(startOrderDeletionConsumer, 5000);
+//     setTimeout(startOrderDeletionConsumer, 60000);
 //   });
 // } catch (error) {
 //   console.error('Error in order deletion consumer:', error);
-//   setTimeout(startOrderDeletionConsumer, 5000);
+//   setTimeout(startOrderDeletionConsumer, 60000);
 // }
 // }
 // startOrderDeletionConsumer()
@@ -1951,20 +1951,20 @@ async function startUserVerificationConsumer() {
         logger.error('RabbitMQ connection error:', err);
         channel = null;
         connection = null;
-        setTimeout(connect, 5000);
+        setTimeout(connect, 60000);
       });
 
       connection.on('close', () => {
         logger.warn('RabbitMQ connection closed, attempting to reconnect');
         channel = null;
         connection = null;
-        setTimeout(connect, 5000);
+        setTimeout(connect, 60000);
       });
 
       return channel;
     } catch (err) {
       logger.error('Failed to initialize RabbitMQ:', err);
-      setTimeout(connect, 5000);
+      setTimeout(connect, 60000);
       throw err;
     }
   };
@@ -2066,7 +2066,7 @@ async function startUserVerificationConsumer() {
 
   } catch (error) {
     logger.error('Error starting user verification consumer:', error);
-    setTimeout(startUserVerificationConsumer, 5000);
+    setTimeout(startUserVerificationConsumer, 60000);
   }
 }
 
@@ -2108,20 +2108,20 @@ async function startOrderUpdateConsumer() {
         logger.error('RabbitMQ connection error:', err);
         channel = null;
         connection = null;
-        setTimeout(connect, 5000);
+        setTimeout(connect, 60000);
       });
 
       connection.on('close', () => {
         logger.warn('RabbitMQ connection closed, attempting to reconnect');
         channel = null;
         connection = null;
-        setTimeout(connect, 5000);
+        setTimeout(connect, 60000);
       });
 
       return channel;
     } catch (err) {
       logger.error('Failed to initialize RabbitMQ:', err);
-      setTimeout(connect, 5000);
+      setTimeout(connect, 60000);
       throw err;
     }
   };
@@ -2247,7 +2247,7 @@ async function startOrderUpdateConsumer() {
 
   } catch (error) {
     logger.error('Error starting order update consumer:', error);
-    setTimeout(startOrderUpdateConsumer, 5000);
+    setTimeout(startOrderUpdateConsumer, 60000);
   }
 }
 
@@ -2273,20 +2273,20 @@ async function startOrderStatusUpdateConsumer() {
         logger.error('RabbitMQ connection error:', err);
         channel = null;
         connection = null;
-        setTimeout(connect, 5000);
+        setTimeout(connect, 60000);
       });
 
       connection.on('close', () => {
         logger.warn('RabbitMQ connection closed, attempting to reconnect');
         channel = null;
         connection = null;
-        setTimeout(connect, 5000);
+        setTimeout(connect, 60000);
       });
 
       return channel;
     } catch (err) {
       logger.error('Failed to initialize RabbitMQ:', err);
-      setTimeout(connect, 5000);
+      setTimeout(connect, 60000);
       throw err;
     }
   };
@@ -2379,7 +2379,7 @@ async function startOrderStatusUpdateConsumer() {
 
   } catch (error) {
     logger.error('Error starting order status update consumer:', error);
-    setTimeout(startOrderStatusUpdateConsumer, 5000);
+    setTimeout(startOrderStatusUpdateConsumer, 60000);
   }
 }
 
@@ -2421,20 +2421,20 @@ async function startOrderCancellationStatusUpdateConsumer() {
         logger.error('RabbitMQ connection error:', err);
         channel = null;
         connection = null;
-        setTimeout(connect, 5000);
+        setTimeout(connect, 60000);
       });
 
       connection.on('close', () => {
         logger.warn('RabbitMQ connection closed, attempting to reconnect');
         channel = null;
         connection = null;
-        setTimeout(connect, 5000);
+        setTimeout(connect, 60000);
       });
 
       return channel;
     } catch (err) {
       logger.error('Failed to initialize RabbitMQ:', err);
-      setTimeout(connect, 5000);
+      setTimeout(connect, 60000);
       throw err;
     }
   };
@@ -2532,7 +2532,7 @@ async function startOrderCancellationStatusUpdateConsumer() {
 
   } catch (error) {
     logger.error('Error starting order cancellation status update consumer:', error);
-    setTimeout(startOrderCancellationStatusUpdateConsumer, 5000);
+    setTimeout(startOrderCancellationStatusUpdateConsumer, 60000);
   }
 }
 
@@ -2575,20 +2575,20 @@ async function startOrderDeletionConsumer() {
         logger.error('RabbitMQ connection error:', err);
         channel = null;
         connection = null;
-        setTimeout(connect, 5000);
+        setTimeout(connect, 60000);
       });
 
       connection.on('close', () => {
         logger.warn('RabbitMQ connection closed, attempting to reconnect');
         channel = null;
         connection = null;
-        setTimeout(connect, 5000);
+        setTimeout(connect, 60000);
       });
 
       return channel;
     } catch (err) {
       logger.error('Failed to initialize RabbitMQ:', err);
-      setTimeout(connect, 5000);
+      setTimeout(connect, 60000);
       throw err;
     }
   };
@@ -2682,7 +2682,7 @@ async function startOrderDeletionConsumer() {
 
   } catch (error) {
     logger.error('Error starting order deletion consumer:', error);
-    setTimeout(startOrderDeletionConsumer, 5000);
+    setTimeout(startOrderDeletionConsumer, 60000);
   }
 }
 
